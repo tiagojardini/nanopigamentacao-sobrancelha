@@ -24,10 +24,10 @@ export default function SobrePage() {
         harmonizam o seu rosto e emolduram o seu olhar.”
       </p>
 
-      <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-sm bg-navy/5">
+      <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-sm bg-navy/5">
         <Image
-          src="/estudio-alexia.jpg"
-          alt="Espaço de atendimento da Aléxia Sobrancelhas em Valinhos"
+          src="/alexia-atendimento.jpg"
+          alt="Aléxia durante um atendimento de nanopigmentação de sobrancelhas"
           fill
           className="object-cover"
           sizes="(min-width: 768px) 768px, 100vw"
