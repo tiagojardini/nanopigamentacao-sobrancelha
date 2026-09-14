@@ -1,23 +1,47 @@
 import { cities } from "./cities";
 import type { CitySlug } from "./testimonials";
 
-export type PortfolioItem = {
+export type PortfolioPhotoItem = {
+  kind: "photo";
   id: string;
   /** Path under /public/portfolio/. */
   beforeImage: string;
   afterImage: string;
 };
 
-// Real before/after photos from Alexia's Drive. Clients 3, 4 and 5 only had a
-// video in that folder (no still photo), so they're left out until stills
-// exist for them.
-const REAL_CLIENT_IDS = [1, 2, 6, 7, 8, 9];
+export type PortfolioVideoItem = {
+  kind: "video";
+  id: string;
+  /** Path under /public/portfolio/. Short, silent result clip — no before/after pair. */
+  video: string;
+};
 
-export const portfolio: PortfolioItem[] = REAL_CLIENT_IDS.map((n) => ({
-  id: `cliente-${n}`,
-  beforeImage: `/portfolio/cliente-${n}-antes.jpg`,
-  afterImage: `/portfolio/cliente-${n}-depois.jpg`,
-}));
+export type PortfolioItem = PortfolioPhotoItem | PortfolioVideoItem;
+
+// Real before/after photos from Alexia's Drive.
+const PHOTO_CLIENT_IDS = [1, 2, 6, 7, 8, 9];
+
+// Clients 3, 4 and 5 only had a video of the finished result (no separate
+// before/after stills), so they're shown as short muted result clips instead.
+const VIDEO_CLIENT_IDS = [3, 4, 5];
+
+export const portfolio: PortfolioItem[] = [
+  ...PHOTO_CLIENT_IDS.map(
+    (n): PortfolioPhotoItem => ({
+      kind: "photo",
+      id: `cliente-${n}`,
+      beforeImage: `/portfolio/cliente-${n}-antes.jpg`,
+      afterImage: `/portfolio/cliente-${n}-depois.jpg`,
+    })
+  ),
+  ...VIDEO_CLIENT_IDS.map(
+    (n): PortfolioVideoItem => ({
+      kind: "video",
+      id: `cliente-${n}`,
+      video: `/portfolio/cliente-${n}-resultado.mp4`,
+    })
+  ),
+];
 
 /**
  * Returns the full portfolio, rotated to a different starting point per city,
