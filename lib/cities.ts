@@ -4,7 +4,7 @@ export type City = {
   slug: CitySlug;
   name: string;
   state: "SP";
-  /** Approximate driving time from the city center to the Valinhos studio. Confirm before publishing. */
+  /** Approximate driving time from the city center to the Valinhos studio. */
   approxTravelTime: string;
   /** One differentiating angle for this city's intro paragraph. */
   intro: string;
@@ -31,7 +31,7 @@ export const cities: City[] = [
     slug: "campinas",
     name: "Campinas",
     state: "SP",
-    approxTravelTime: "cerca de 25 a 35 minutos de carro, dependendo da região",
+    approxTravelTime: "cerca de 15 a 25 minutos de carro, dependendo da região",
     intro:
       "Mesmo com todos os estúdios de estética que Campinas tem, muitas clientes preferem atravessar até Valinhos pela técnica de fio a fio hiper-realista da Aléxia — o resultado natural é o que mais pesa na decisão.",
   },
@@ -39,7 +39,7 @@ export const cities: City[] = [
     slug: "itatiba",
     name: "Itatiba",
     state: "SP",
-    approxTravelTime: "cerca de 35 a 45 minutos de carro",
+    approxTravelTime: "cerca de 20 a 30 minutos de carro",
     intro:
       "De Itatiba, o deslocamento até o estúdio em Valinhos costuma valer a pena justamente pela durabilidade do procedimento: com resultado de 8 a 12 meses, não é uma viagem recorrente toda semana.",
   },
@@ -47,7 +47,7 @@ export const cities: City[] = [
     slug: "jundiai",
     name: "Jundiaí",
     state: "SP",
-    approxTravelTime: "cerca de 40 a 50 minutos de carro",
+    approxTravelTime: "cerca de 25 a 35 minutos de carro",
     intro:
       "Jundiaí é a cidade mais distante do estúdio entre as que a Aléxia atende, e ainda assim várias clientes fazem esse trajeto — geralmente depois de ver o resultado de alguma amiga ou nas redes sociais.",
   },
