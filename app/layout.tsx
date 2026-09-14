@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Montserrat, Playfair_Display, Inter } from "next/font/google";
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
+  variable: "--font-montserrat",
+  weight: ["500", "600", "700"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  style: ["italic", "normal"],
 });
 
 const inter = Inter({
@@ -33,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
+      <body className={`${montserrat.variable} ${playfair.variable} ${inter.variable} antialiased`}>
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

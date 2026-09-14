@@ -14,12 +14,13 @@ export function generateStaticParams() {
   return cities.map((c) => ({ cidade: c.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { cidade: string };
-}): Metadata {
-  const city = getCityBySlug(params.cidade);
+  params: Promise<{ cidade: string }>;
+}): Promise<Metadata> {
+  const { cidade } = await params;
+  const city = getCityBySlug(cidade);
   if (!city) return {};
 
   return {
@@ -31,12 +32,13 @@ export function generateMetadata({
   };
 }
 
-export default function CidadePage({
+export default async function CidadePage({
   params,
 }: {
-  params: { cidade: string };
+  params: Promise<{ cidade: string }>;
 }) {
-  const city = getCityBySlug(params.cidade);
+  const { cidade } = await params;
+  const city = getCityBySlug(cidade);
   if (!city) notFound();
 
   const testimonials = testimonialsByCity[city.slug as CitySlug];
@@ -47,22 +49,22 @@ export default function CidadePage({
       <JsonLd data={getNanopigmentacaoServiceSchema(`${city.name}, SP`)} />
 
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <p className="text-sm uppercase tracking-wide text-terracota">
+        <p className="font-heading text-sm font-semibold uppercase tracking-wide text-coral">
           Atendimento para {city.name}
         </p>
-        <h1 className="mt-3 max-w-2xl font-serif text-4xl leading-tight text-ink">
+        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-bold uppercase leading-tight tracking-wide text-navy">
           Nanopigmentação de sobrancelhas em {city.name}
         </h1>
-        <p className="mt-5 max-w-xl text-ink/70">{city.intro}</p>
-        <p className="mt-3 max-w-xl text-sm text-ink/50">
+        <p className="mt-5 max-w-xl text-navy/70">{city.intro}</p>
+        <p className="mt-3 max-w-xl text-sm text-navy/50">
           De {city.name} até o estúdio em Valinhos: {city.approxTravelTime}.
         </p>
       </section>
 
       <section className="mx-auto grid max-w-5xl gap-10 px-6 pb-16 md:grid-cols-[1.2fr_1fr]">
-        <div className="space-y-6 text-ink/80">
+        <div className="space-y-6 text-navy/80">
           <div>
-            <h2 className="font-serif text-xl text-ink">
+            <h2 className="font-heading text-xl font-bold uppercase tracking-wide text-navy">
               O que esperar da sessão
             </h2>
             <p className="mt-2 text-sm leading-relaxed">
@@ -73,7 +75,7 @@ export default function CidadePage({
             </p>
           </div>
           <div>
-            <h2 className="font-serif text-xl text-ink">
+            <h2 className="font-heading text-xl font-bold uppercase tracking-wide text-navy">
               Depoimentos de clientes
             </h2>
             <div className="mt-4 space-y-6">
@@ -86,9 +88,9 @@ export default function CidadePage({
         <NanopigmentacaoPriceCard />
       </section>
 
-      <section className="border-y border-ink/10 bg-white py-16">
+      <section className="border-y border-navy/10 bg-white py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="font-serif text-2xl text-ink">
+          <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-navy">
             Resultados de clientes de {city.name} e região
           </h2>
           <div className="mt-8">
@@ -98,18 +100,20 @@ export default function CidadePage({
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="font-serif text-2xl text-ink">Onde fica o estúdio</h2>
-        <p className="mt-2 max-w-lg text-ink/70">{business.address.full}</p>
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-navy">
+          Onde fica o estúdio
+        </h2>
+        <p className="mt-2 max-w-lg text-navy/70">{business.address.full}</p>
         <a
           href={business.whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block rounded-full bg-terracota px-6 py-3 text-sm font-medium text-cream transition hover:bg-terracota-dark"
+          className="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"
         >
           Agendar simulação pelo WhatsApp
         </a>
         <div className="mt-10">
-          <p className="text-sm text-ink/50">Outras cidades atendidas:</p>
+          <p className="text-sm text-navy/50">Outras cidades atendidas:</p>
           <div className="mt-3 flex flex-wrap gap-3">
             {cities
               .filter((c) => c.slug !== city.slug)
@@ -117,7 +121,7 @@ export default function CidadePage({
                 <Link
                   key={c.slug}
                   href={`/micropigmentacao-sobrancelhas/${c.slug}`}
-                  className="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink/80 transition hover:border-terracota hover:text-terracota"
+                  className="rounded-full border border-navy/15 px-4 py-2 text-sm text-navy/80 transition hover:border-coral hover:text-coral"
                 >
                   {c.name}
                 </Link>

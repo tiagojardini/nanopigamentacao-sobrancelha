@@ -20,13 +20,13 @@ export default function MicropigmentacaoPage() {
       <JsonLd data={getNanopigmentacaoServiceSchema()} />
 
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <p className="text-sm uppercase tracking-wide text-terracota">
+        <p className="font-heading text-sm font-semibold uppercase tracking-wide text-coral">
           Técnica fio a fio
         </p>
-        <h1 className="mt-3 max-w-2xl font-serif text-4xl leading-tight text-ink">
+        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-bold uppercase leading-tight tracking-wide text-navy">
           Nanopigmentação de sobrancelhas
         </h1>
-        <p className="mt-5 max-w-xl text-ink/70">
+        <p className="mt-5 max-w-xl text-navy/70">
           A nanopigmentação veio pra realçar a beleza natural que já existe,
           trazendo autoestima e praticidade. Antes de agendar, é feita uma
           triagem baseada no histórico clínico da cliente, pra garantir que a
@@ -35,9 +35,11 @@ export default function MicropigmentacaoPage() {
       </section>
 
       <section className="mx-auto grid max-w-5xl gap-10 px-6 pb-16 md:grid-cols-[1.2fr_1fr]">
-        <div className="space-y-6 text-ink/80">
+        <div className="space-y-6 text-navy/80">
           <div>
-            <h2 className="font-serif text-xl text-ink">Design estratégico individual</h2>
+            <h2 className="font-heading text-xl font-bold uppercase tracking-wide text-navy">
+              Design estratégico individual
+            </h2>
             <p className="mt-2 text-sm leading-relaxed">
               Cada rosto tem sua própria estrutura de pelos e formato — o
               design é feito em cima dessas medidas, nunca de um molde pronto.
@@ -45,7 +47,9 @@ export default function MicropigmentacaoPage() {
             </p>
           </div>
           <div>
-            <h2 className="font-serif text-xl text-ink">Fios hiper-realistas</h2>
+            <h2 className="font-heading text-xl font-bold uppercase tracking-wide text-navy">
+              Fios hiper-realistas
+            </h2>
             <p className="mt-2 text-sm leading-relaxed">
               A abordagem da Aléxia é fios mega finos, estrategicamente
               desenhados na cor dos seus próprios pelos — inclusive pra fios
@@ -54,7 +58,9 @@ export default function MicropigmentacaoPage() {
             </p>
           </div>
           <div>
-            <h2 className="font-serif text-xl text-ink">Cuidado e biossegurança</h2>
+            <h2 className="font-heading text-xl font-bold uppercase tracking-wide text-navy">
+              Cuidado e biossegurança
+            </h2>
             <p className="mt-2 text-sm leading-relaxed">
               Pigmentos importados de alta performance, livres de metais
               pesados, e uma cartilha completa de cuidados pós-procedimento
@@ -65,10 +71,12 @@ export default function MicropigmentacaoPage() {
         <NanopigmentacaoPriceCard />
       </section>
 
-      <section className="border-y border-ink/10 bg-white py-16">
+      <section className="border-y border-navy/10 bg-white py-16">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="font-serif text-2xl text-ink">Resultados reais</h2>
-          <p className="mt-2 max-w-lg text-ink/70">
+          <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-navy">
+            Resultados reais
+          </h2>
+          <p className="mt-2 max-w-lg text-navy/70">
             Uma amostra do portfólio de antes e depois da Aléxia.
           </p>
           <div className="mt-8">
@@ -78,8 +86,10 @@ export default function MicropigmentacaoPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <h2 className="font-serif text-2xl text-ink">Atendemos também</h2>
-        <p className="mt-2 max-w-lg text-ink/70">
+        <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-navy">
+          Atendemos também
+        </h2>
+        <p className="mt-2 max-w-lg text-navy/70">
           Veja detalhes de atendimento, depoimentos e portfólio específicos
           pra cada cidade:
         </p>
@@ -90,7 +100,7 @@ export default function MicropigmentacaoPage() {
               <Link
                 key={c.slug}
                 href={`/micropigmentacao-sobrancelhas/${c.slug}`}
-                className="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink/80 transition hover:border-terracota hover:text-terracota"
+                className="rounded-full border border-navy/15 px-4 py-2 text-sm text-navy/80 transition hover:border-coral hover:text-coral"
               >
                 {c.name}
               </Link>

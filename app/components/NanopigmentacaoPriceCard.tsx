@@ -2,31 +2,31 @@ import { business, nanopigmentacao } from "@/lib/business";
 
 export function NanopigmentacaoPriceCard() {
   return (
-    <div className="border border-ink/10 bg-white p-8">
-      <p className="text-sm uppercase tracking-wide text-terracota">
+    <div className="border border-navy/10 bg-white p-8">
+      <p className="font-heading text-xs font-semibold uppercase tracking-wide text-coral">
         {nanopigmentacao.name}
       </p>
-      <p className="mt-2 font-serif text-4xl text-ink">
+      <p className="mt-2 font-heading text-4xl font-semibold text-navy">
         {nanopigmentacao.priceDisplay}
       </p>
-      <p className="text-sm text-ink/60">à vista, ou em {nanopigmentacao.installments}</p>
+      <p className="text-sm text-navy/60">à vista, ou em {nanopigmentacao.installments}</p>
 
-      <dl className="mt-6 space-y-3 text-sm text-ink/80">
+      <dl className="mt-6 space-y-3 text-sm text-navy/80">
         <div className="flex justify-between gap-4">
-          <dt className="text-ink/50">Duração da sessão</dt>
+          <dt className="text-navy/50">Duração da sessão</dt>
           <dd className="text-right">{nanopigmentacao.sessionDuration}</dd>
         </div>
         <div className="flex justify-between gap-4">
-          <dt className="text-ink/50">Duração do resultado</dt>
+          <dt className="text-navy/50">Duração do resultado</dt>
           <dd className="text-right">{nanopigmentacao.resultDuration}</dd>
         </div>
         <div className="flex justify-between gap-4">
-          <dt className="text-ink/50">Taxa de agendamento</dt>
+          <dt className="text-navy/50">Taxa de agendamento</dt>
           <dd className="text-right">{nanopigmentacao.bookingFeeDisplay}</dd>
         </div>
       </dl>
 
-      <p className="mt-6 text-sm leading-relaxed text-ink/70">
+      <p className="mt-6 text-sm leading-relaxed text-navy/70">
         {nanopigmentacao.simulationNote}
       </p>
 
@@ -34,7 +34,7 @@ export function NanopigmentacaoPriceCard() {
         href={business.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 block rounded-full bg-terracota px-6 py-3 text-center text-sm font-medium text-cream transition hover:bg-terracota-dark"
+        className="mt-6 block rounded-full bg-coral px-6 py-3 text-center font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"
       >
         Agendar simulação pelo WhatsApp
       </a>

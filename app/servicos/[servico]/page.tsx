@@ -8,12 +8,13 @@ export function generateStaticParams() {
   return services.map((s) => ({ servico: s.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { servico: string };
-}): Metadata {
-  const service = services.find((s) => s.slug === params.servico);
+  params: Promise<{ servico: string }>;
+}): Promise<Metadata> {
+  const { servico } = await params;
+  const service = services.find((s) => s.slug === servico);
   if (!service) return {};
 
   return {
@@ -22,43 +23,48 @@ export function generateMetadata({
   };
 }
 
-export default function ServicoPage({
+export default async function ServicoPage({
   params,
 }: {
-  params: { servico: string };
+  params: Promise<{ servico: string }>;
 }) {
-  const service = services.find((s) => s.slug === params.servico);
+  const { servico } = await params;
+  const service = services.find((s) => s.slug === servico);
   if (!service) notFound();
 
   return (
     <section className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm uppercase tracking-wide text-terracota">Serviço</p>
-      <h1 className="mt-3 font-serif text-4xl leading-tight text-ink">
+      <p className="font-heading text-sm font-semibold uppercase tracking-wide text-coral">
+        Serviço
+      </p>
+      <h1 className="mt-3 font-heading text-4xl font-bold uppercase leading-tight tracking-wide text-navy">
         {service.name}
       </h1>
-      <p className="mt-5 text-ink/70">{service.description}</p>
+      <p className="mt-5 text-navy/70">{service.description}</p>
 
-      <div className="mt-8 flex flex-wrap items-center gap-6 border-y border-ink/10 py-6">
+      <div className="mt-8 flex flex-wrap items-center gap-6 border-y border-navy/10 py-6">
         <div>
-          <p className="text-xs uppercase tracking-wide text-ink/40">Valor</p>
-          <p className="mt-1 font-serif text-2xl text-ink">
+          <p className="font-heading text-xs font-semibold uppercase tracking-wide text-navy/40">
+            Valor
+          </p>
+          <p className="mt-1 font-heading text-2xl font-semibold text-navy">
             {service.priceDisplay}
           </p>
         </div>
         {service.sessionDuration && (
           <div>
-            <p className="text-xs uppercase tracking-wide text-ink/40">
+            <p className="font-heading text-xs font-semibold uppercase tracking-wide text-navy/40">
               Duração
             </p>
-            <p className="mt-1 text-ink/80">{service.sessionDuration}</p>
+            <p className="mt-1 text-navy/80">{service.sessionDuration}</p>
           </div>
         )}
         {service.resultDuration && (
           <div>
-            <p className="text-xs uppercase tracking-wide text-ink/40">
+            <p className="font-heading text-xs font-semibold uppercase tracking-wide text-navy/40">
               Resultado dura
             </p>
-            <p className="mt-1 text-ink/80">{service.resultDuration}</p>
+            <p className="mt-1 text-navy/80">{service.resultDuration}</p>
           </div>
         )}
       </div>
@@ -67,13 +73,13 @@ export default function ServicoPage({
         href={business.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-8 inline-block rounded-full bg-terracota px-6 py-3 text-sm font-medium text-cream transition hover:bg-terracota-dark"
+        className="mt-8 inline-block rounded-full bg-coral px-6 py-3 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"
       >
         Agendar pelo WhatsApp
       </a>
 
       <div className="mt-12">
-        <Link href="/micropigmentacao-sobrancelhas" className="text-sm text-terracota hover:underline">
+        <Link href="/micropigmentacao-sobrancelhas" className="text-sm text-coral hover:underline">
           Ver também: Nanopigmentação de sobrancelhas →
         </Link>
       </div>

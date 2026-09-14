@@ -1,28 +1,37 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business } from "@/lib/business";
 import { cities } from "@/lib/cities";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-ink/10 bg-ink text-cream/90">
+    <footer className="border-t border-black/10 bg-navy-dark text-cream/90">
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
-            <p className="font-serif text-lg text-cream">Alléxia Sobrancelhas</p>
-            <p className="mt-3 text-sm leading-relaxed text-cream/70">
+            <Image
+              src="/logo-light.svg"
+              alt={business.name}
+              width={175}
+              height={69}
+              className="h-11 w-auto"
+            />
+            <p className="mt-4 text-sm leading-relaxed text-cream/70">
               {business.address.full}
             </p>
             <a
               href={business.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-block text-sm text-terracota-light hover:underline"
+              className="mt-3 inline-block text-sm text-coral-light hover:underline"
             >
               Agendar pelo WhatsApp
             </a>
           </div>
           <div>
-            <p className="text-sm font-medium text-cream">Atendemos também</p>
+            <p className="font-heading text-xs font-semibold uppercase tracking-wide text-cream">
+              Atendemos também
+            </p>
             <ul className="mt-3 space-y-2 text-sm text-cream/70">
               {cities
                 .filter((c) => c.slug !== "valinhos")
@@ -30,7 +39,7 @@ export function SiteFooter() {
                   <li key={c.slug}>
                     <Link
                       href={`/micropigmentacao-sobrancelhas/${c.slug}`}
-                      className="hover:text-terracota-light hover:underline"
+                      className="hover:text-coral-light hover:underline"
                     >
                       Micropigmentação em {c.name}
                     </Link>
@@ -39,14 +48,16 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-medium text-cream">Redes</p>
+            <p className="font-heading text-xs font-semibold uppercase tracking-wide text-cream">
+              Redes
+            </p>
             <ul className="mt-3 space-y-2 text-sm text-cream/70">
               <li>
                 <a
                   href={business.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-terracota-light hover:underline"
+                  className="hover:text-coral-light hover:underline"
                 >
                   Instagram
                 </a>
@@ -54,7 +65,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href={`mailto:${business.email}`}
-                  className="hover:text-terracota-light hover:underline"
+                  className="hover:text-coral-light hover:underline"
                 >
                   {business.email}
                 </a>

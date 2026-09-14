@@ -13,7 +13,7 @@ export function PortfolioGallery({
       {items.map((item) => (
         <div key={item.id} className="space-y-1">
           <div className="grid grid-cols-2 gap-1 overflow-hidden rounded-sm">
-            <div className="relative aspect-[3/4] bg-ink/5">
+            <div className="relative aspect-[3/4] bg-navy/5">
               <Image
                 src={item.beforeImage}
                 alt={`Sobrancelha antes da nanopigmentação — atendimento para clientes de ${cityName}`}
@@ -22,7 +22,7 @@ export function PortfolioGallery({
                 sizes="(min-width: 640px) 16vw, 25vw"
               />
             </div>
-            <div className="relative aspect-[3/4] bg-ink/5">
+            <div className="relative aspect-[3/4] bg-navy/5">
               <Image
                 src={item.afterImage}
                 alt={`Resultado de nanopigmentação de sobrancelha — atendimento para clientes de ${cityName}`}
@@ -32,7 +32,7 @@ export function PortfolioGallery({
               />
             </div>
           </div>
-          <p className="text-center text-xs uppercase tracking-wide text-ink/40">
+          <p className="font-heading text-center text-xs font-semibold uppercase tracking-wide text-navy/40">
             Antes / Depois
           </p>
         </div>
