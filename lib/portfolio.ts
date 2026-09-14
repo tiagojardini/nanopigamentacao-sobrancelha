@@ -3,25 +3,25 @@ import type { CitySlug } from "./testimonials";
 
 export type PortfolioItem = {
   id: string;
-  /** Path under /public/portfolio/ — replace placeholders with real photos before publishing. */
+  /** Path under /public/portfolio/. */
   beforeImage: string;
   afterImage: string;
 };
 
-// 9 anonymized before/after sets. Swap these placeholder paths for the real
-// files once they're exported from Drive into /public/portfolio/.
-export const portfolio: PortfolioItem[] = Array.from({ length: 9 }, (_, i) => {
-  const n = i + 1;
-  return {
-    id: `cliente-${n}`,
-    beforeImage: `/portfolio/cliente-${n}-antes.jpg`,
-    afterImage: `/portfolio/cliente-${n}-depois.jpg`,
-  };
-});
+// Real before/after photos from Alexia's Drive. Clients 3, 4 and 5 only had a
+// video in that folder (no still photo), so they're left out until stills
+// exist for them.
+const REAL_CLIENT_IDS = [1, 2, 6, 7, 8, 9];
+
+export const portfolio: PortfolioItem[] = REAL_CLIENT_IDS.map((n) => ({
+  id: `cliente-${n}`,
+  beforeImage: `/portfolio/cliente-${n}-antes.jpg`,
+  afterImage: `/portfolio/cliente-${n}-depois.jpg`,
+}));
 
 /**
  * Returns the full portfolio, rotated to a different starting point per city,
- * so each city page shows the same 9 results in a different order (avoids
+ * so each city page shows the same results in a different order (avoids
  * identical DOM order across pages while keeping full duplicate-content risk
  * off the table, since Google doesn't read image order as text content).
  */
