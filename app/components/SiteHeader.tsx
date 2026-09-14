@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { business } from "@/lib/business";
+import { business, getWhatsappLink } from "@/lib/business";
 
 export function SiteHeader() {
   return (
@@ -27,14 +27,37 @@ export function SiteHeader() {
             Sobre a Aléxia
           </Link>
         </nav>
-        <a
-          href={business.whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-coral px-5 py-2 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"
-        >
-          Agendar
-        </a>
+        <div className="flex items-center gap-4">
+          <a
+            href={business.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram da Alléxia Sobrancelhas"
+            className="text-navy/60 transition hover:text-coral"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a
+            href={getWhatsappLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-coral px-5 py-2 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"
+          >
+            Agendar
+          </a>
+        </div>
       </div>
     </header>
   );

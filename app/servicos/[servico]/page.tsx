@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services } from "@/lib/services";
-import { business } from "@/lib/business";
+import { getWhatsappLink } from "@/lib/business";
 
 export function generateStaticParams() {
   return services.map((s) => ({ servico: s.slug }));
@@ -70,7 +70,7 @@ export default async function ServicoPage({
       </div>
 
       <a
-        href={business.whatsappLink}
+        href={getWhatsappLink(`Olá! Vim pelo site e quero agendar o serviço de ${service.name}.`)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-8 inline-block rounded-full bg-coral px-6 py-3 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"

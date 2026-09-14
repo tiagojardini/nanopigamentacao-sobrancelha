@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { business } from "@/lib/business";
+import { business, getWhatsappLink } from "@/lib/business";
 import { cities } from "@/lib/cities";
 
 export function SiteFooter() {
@@ -20,7 +20,7 @@ export function SiteFooter() {
               {business.address.full}
             </p>
             <a
-              href={business.whatsappLink}
+              href={getWhatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 inline-block text-sm text-coral-light hover:underline"

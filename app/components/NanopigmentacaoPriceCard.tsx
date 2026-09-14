@@ -1,6 +1,10 @@
-import { business, nanopigmentacao } from "@/lib/business";
+import { getWhatsappLink, nanopigmentacao } from "@/lib/business";
 
-export function NanopigmentacaoPriceCard() {
+export function NanopigmentacaoPriceCard({ cityName }: { cityName?: string } = {}) {
+  const message = cityName
+    ? `Olá! Vim pelo site, sou de ${cityName} e quero agendar uma simulação de nanopigmentação de sobrancelhas.`
+    : undefined;
+
   return (
     <div className="border border-navy/10 bg-white p-8">
       <p className="font-heading text-xs font-semibold uppercase tracking-wide text-coral">
@@ -31,7 +35,7 @@ export function NanopigmentacaoPriceCard() {
       </p>
 
       <a
-        href={business.whatsappLink}
+        href={getWhatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-6 block rounded-full bg-coral px-6 py-3 text-center font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"

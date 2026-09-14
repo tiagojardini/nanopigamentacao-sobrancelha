@@ -8,7 +8,7 @@ import { TestimonialCard } from "../../components/TestimonialCard";
 import { PortfolioGallery } from "../../components/PortfolioGallery";
 import { NanopigmentacaoPriceCard } from "../../components/NanopigmentacaoPriceCard";
 import { JsonLd, getNanopigmentacaoServiceSchema } from "@/lib/schema";
-import { business } from "@/lib/business";
+import { business, getWhatsappLink } from "@/lib/business";
 
 export function generateStaticParams() {
   return cities.map((c) => ({ cidade: c.slug }));
@@ -85,7 +85,7 @@ export default async function CidadePage({
             </div>
           </div>
         </div>
-        <NanopigmentacaoPriceCard />
+        <NanopigmentacaoPriceCard cityName={city.name} />
       </section>
 
       <section className="border-y border-navy/10 bg-white py-16">
@@ -105,7 +105,9 @@ export default async function CidadePage({
         </h2>
         <p className="mt-2 max-w-lg text-navy/70">{business.address.full}</p>
         <a
-          href={business.whatsappLink}
+          href={getWhatsappLink(
+            `Olá! Vim pelo site, sou de ${city.name} e quero agendar uma simulação de nanopigmentação de sobrancelhas.`
+          )}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-6 inline-block rounded-full bg-coral px-6 py-3 font-heading text-xs font-semibold uppercase tracking-wide text-cream transition hover:bg-coral-dark"

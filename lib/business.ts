@@ -2,7 +2,6 @@ export const business = {
   name: "Alléxia Sobrancelhas",
   professional: "Aléxia",
   whatsapp: "5519983376322",
-  whatsappLink: "https://api.whatsapp.com/send?phone=5519983376322",
   instagram: "https://www.instagram.com/allexiamicro/",
   email: "contato@alexiasobrancelhas.com.br",
   address: {
@@ -21,6 +20,13 @@ export const business = {
     longitude: -46.9937,
   },
 } as const;
+
+const DEFAULT_WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site e quero agendar uma simulação de nanopigmentação de sobrancelhas.";
+
+export function getWhatsappLink(message: string = DEFAULT_WHATSAPP_MESSAGE) {
+  return `https://api.whatsapp.com/send?phone=${business.whatsapp}&text=${encodeURIComponent(message)}`;
+}
 
 export const nanopigmentacao = {
   name: "Nanopigmentação fio a fio",
